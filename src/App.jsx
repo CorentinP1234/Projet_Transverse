@@ -14,6 +14,7 @@ function App() {
         </a>
         <a href="https://reactjs.org" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
+          <p>Bonjour</p>
         </a>
       </div>
       <h1>Hello world</h1>
