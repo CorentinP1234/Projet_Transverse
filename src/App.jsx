@@ -19,7 +19,7 @@ function App() {
       <h1>Hello world</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          la taille du penis de corentin = {count} cm
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
