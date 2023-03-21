@@ -18,7 +18,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from '../Side_Bar';
-import Chart from '../../Profile_PAGE/Image_PROFILE';
+import Image_PROFILE from '../../Profile_PAGE/Image_PROFILE';
 import Learning_XP_Box from '../../Profile_PAGE/Learning_XP_Box_PROFILE';
 import Historique_Missions from '../../Profile_PAGE/HistoriqueMissions_PROFILE';
 
@@ -214,7 +214,7 @@ function Profile() {
                     height: 240,
                   }}
                 >
-                  <Chart />
+                  <Image_PROFILE />
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
