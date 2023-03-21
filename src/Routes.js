@@ -1,1 +1,4 @@
-<Route path="/login" element={<Login />} />
+<Routes>
+  <Route path="/login" element={<Login />} />
+  <Route path="/home" element={<Home />} />
+</Routes>
