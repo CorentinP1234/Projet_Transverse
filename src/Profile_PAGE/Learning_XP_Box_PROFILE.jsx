@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import Title from './Title';
+import Title from '../components/Title';
 
 function preventDefault(event) {
   event.preventDefault();
@@ -18,16 +18,16 @@ function getCurrentDate() {
   return current
 }
 
-export default function Deposits() {
+export default function Learning_XP_Box({ sum_XP }) {
   return (
     <React.Fragment>
       <Title>Learning XP</Title>
       <Typography component="p" variant="h4">
-        {}/20
+        {sum_XP}/20
       </Typography>
       <Typography fontSize={15} sx={{ flex: 1 }}>
-      <br></br>
-      <br></br>
+        <br></br>
+        <br></br>
         {getCurrentDate()}
       </Typography>
     </React.Fragment>

@@ -17,10 +17,10 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
+import { mainListItems, secondaryListItems } from '../Side_Bar';
+import Chart from '../../Profile_PAGE/Image_PROFILE';
+import Learning_XP_Box from '../../Profile_PAGE/Learning_XP_Box_PROFILE';
+import Historique_Missions from '../../Profile_PAGE/HistoriqueMissions_PROFILE';
 
 const drawerWidth = 240;
 
@@ -41,6 +41,18 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+
+function createData(id, date, type, lieu, assos, XP) {
+  return { id, date, type, lieu, assos, XP };
+}
+
+function sum_XP(rows) {
+  let sum = 0;
+  for (let i = 0; i < rows.length; i++) {
+    sum += rows[i].XP;
+  }
+  return sum;
+}
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -70,7 +82,50 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
+function Profile() {
+
+  const missions = [
+    createData(
+      0,
+      '16 Mars, 2019',
+      'participation séance',
+      'Villejuif 78000',
+      'Atlante',
+      2,
+    ),
+    createData(
+      1,
+      '16 Mars, 2019',
+      'journée porte ouverte',
+      'Villejuif 78000',
+      'EFREI',
+      4,
+    ),
+    createData(
+      2,
+      '16 Mars, 2019',
+      'la daronne à romain',
+      'Villejuif 78000',
+      'JSP',
+      10000),
+    createData(
+      3,
+      '16 Mars, 2019',
+      'participation séance',
+      'Villejuif 78000',
+      'Efrei Chess',
+      1,
+    ),
+    createData(
+      4,
+      '15 Mars, 2019',
+      'journée associative',
+      'Villejuif 78000',
+      'Le millésime',
+      5,
+    ),
+  ];
+
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -172,13 +227,13 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  <Learning_XP_Box sum_XP={sum_XP(missions)} />
                 </Paper>
               </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <Historique_Missions missions={missions} />
                 </Paper>
               </Grid>
             </Grid>
@@ -190,5 +245,5 @@ function DashboardContent() {
 }
 
 export default function Dashboard() {
-  return <DashboardContent />;
+  return <Profile />;
 }
