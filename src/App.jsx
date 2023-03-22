@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from "./Pages/Home"
 import SignIn from "./Pages/SignIn"
 import Dashboard from "./Pages/DashBoard"
+import LogIn from "./Pages/Login" 
 import AppBar from "./components/AppBar"
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -23,6 +24,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/DashBoard" element={<Dashboard />} />
               <Route path="/SignIn" element={<SignIn />} />
+              <Route path="/LogIn" element={<LogIn />} />
             </Routes>
           </BrowserRouter>
         </Box>

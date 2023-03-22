@@ -30,13 +30,13 @@ export const mainListItems = (
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="SignIn/Login (WIP)" />
+      <ListItemText primary="SignIn (WIP)" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton href="/LogIn">
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Login (not started)" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
