@@ -1,0 +1,34 @@
+import "./App.css"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from "./Pages/Home"
+import SignIn from "./Pages/SignIn"
+import Dashboard from "./Pages/DashBoard"
+import AppBar from "./components/AppBar"
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const mdTheme = createTheme();
+
+function App() {
+  return (
+    <div className="App">
+      <ThemeProvider theme={mdTheme}>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <AppBar />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/DashBoard" element={<Dashboard />} />
+              <Route path="/SignIn" element={<SignIn />} />
+            </Routes>
+          </BrowserRouter>
+        </Box>
+      </ThemeProvider>
+    </div>
+  )
+}
+
+export default App;

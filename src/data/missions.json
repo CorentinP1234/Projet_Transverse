@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "date": "16 Mars, 2019",
+    "type": "participation séance",
+    "lieu": "Villejuif 78000",
+    "assos": "Atlante",
+    "XP": 2
+  },
+  {
+    "id": 1,
+    "date": "16 Mars, 2019",
+    "type": "journée porte ouverte",
+    "lieu": "Villejuif 78000",
+    "assos": "EFREI",
+    "XP": 4
+  },
+  {
+    "id": 2,
+    "date": "16 Mars, 2019",
+    "type": "la daronne à romain",
+    "lieu": "Villejuif 78000",
+    "assos": "JSP",
+    "XP": 10000
+  },
+  {
+    "id": 3,
+    "date": "16 Mars, 2019",
+    "type": "participation séance",
+    "lieu": "Villejuif 78000",
+    "assos": "Efrei Chess",
+    "XP": 1
+  },
+  {
+    "id": 4,
+    "date": "15 Mars, 2019",
+    "type": "journée associative",
+    "lieu": "Villejuif 78000",
+    "assos": "Le millésime",
+    "XP": 5
+  }
+]

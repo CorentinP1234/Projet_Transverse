@@ -10,31 +10,27 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
-import {Navigate} from 'react-router-dom'
 
-function goToHome() {
-  <Navigate to="/home"/>
-}
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton href='/'>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" onClick={goToHome()}/>
+      <ListItemText primary="Home (not started)"/>
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton href='/DashBoard'>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Orders" />
+      <ListItemText primary="Dash Board (working)" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton href='/SignIn'>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="SignIn/Login (WIP)" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
