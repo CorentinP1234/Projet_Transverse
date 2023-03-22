@@ -3,7 +3,9 @@ const app = express()
 
 
 app.get("/api", (req, res) => {
-  res.json({"users": ["userOne", "userTwo", "userThree"]})
+  let message = {"users": ["userOne", "userTwo", "userThree"]}
+  console.log(`Sending ${message}`)
+  res.json(message)
 })
 
 app.listen(5000, () => {console.log("Server started on port 5000")})
