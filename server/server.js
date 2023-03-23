@@ -7,7 +7,7 @@ const app = express()
 
 app.get("/api", (req, res) => {
   let message = { "users": ["userOne", "userTwo", "userThree"] }
-  console.log(`Sending ${message.json()}`)
+  console.log(`Sending ${JSON.stringify(message)}`)
   res.json(message)
 })
 // app.use('/', missionRouter)
@@ -17,7 +17,7 @@ app.listen(5000, () => { console.log("Server started on port 5000") })
 
 
 // Get all missions
-app.get("/missions", (req, res) => {
+app.get("/api/missions", (req, res) => {
   Missions.findAll()
     .then(missions => {
       res.json(missions)
@@ -26,6 +26,10 @@ app.get("/missions", (req, res) => {
       console.error("Error getting all missions: ", err)
       res.status(500).send("Error getting all missions")
     })
+
+  // let message = { "users": ["userOne", "userTwo", "userThree"] }
+  // console.log("Sending missions")
+  // res.json(message)
 })
 
 // Get all comptes
