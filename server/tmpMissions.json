@@ -1,0 +1,72 @@
+[
+  {
+    "titre": "Mission de développement web",
+    "description": "Nous cherchons des développeurs web pour un projet de grande envergure.",
+    "recruteur": "ABC Solutions",
+    "type": "Temps plein",
+    "xp": "3+ ans",
+    "participant_max": "5",
+    "date": "1er avril",
+    "heure": "14h",
+    "duree": "180 min",
+    "lien_important": "http//recrutement.com",
+    "lien_contact": "Mail: recrutement@abc.com",
+    "lieu": "Paris"
+  },
+  {
+    "titre": "Atelier de robotique",
+    "description": "Apprenez à construire des robots et à les programmer",
+    "recruteur": "Association de robotique",
+    "type": "Atelier",
+    "xp": 3,
+    "participant_max": 15,
+    "date": "15 avril",
+    "heure": "14h",
+    "duree": "2 heures",
+    "lien_important": "http//inscription.com",
+    "lien_contact": "Discord: discord.com/...\nMail: robotique@mail.com",
+    "lieu": "Efrei"
+  },
+  {
+    "titre": "Conférence sur l'intelligence artificielle",
+    "description": "Venez découvrir les dernières avancées en matière d'intelligence artificielle",
+    "recruteur": "Département d'informatique",
+    "type": "Conférence",
+    "xp": 5,
+    "participant_max": 50,
+    "date": "20 avril",
+    "heure": "18h",
+    "duree": "2 heures",
+    "lien_important": "http//inscription.com",
+    "lien_contact": "Discord: discord.com/...\nMail: info@mail.com",
+    "lieu": "Efrei"
+  },
+  {
+    "titre": "Tournoi de jeux vidéo",
+    "description": "Affrontez les autres étudiants dans un tournoi de jeux vidéo",
+    "recruteur": "Association de jeux vidéo",
+    "type": "Tournoi",
+    "xp": 2,
+    "participant_max": 20,
+    "date": "25 avril",
+    "heure": "14h",
+    "duree": "3 heures",
+    "lien_important": "http//inscription.com",
+    "lien_contact": "Discord: discord.com/...\nMail: jeu@mail.com",
+    "lieu": "Efrei"
+  },
+  {
+    "titre": "Cours de cuisine",
+    "description": "Apprenez à cuisiner comme un chef avec nos cours de cuisine",
+    "recruteur": "Association culinaire",
+    "type": "Atelier",
+    "xp": 4,
+    "participant_max": 10,
+    "date": "30 avril",
+    "heure": "16h",
+    "duree": "2 heures",
+    "lien_important": "http//inscription.com",
+    "lien_contact": "Discord: discord.com/...\nMail: cuisine@mail.com",
+    "lieu": "Efrei"
+  }
+]

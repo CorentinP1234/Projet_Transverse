@@ -1,3 +1,4 @@
+const express = require('express')
 const router = express.Router();
 const auth = require("../auth.js");
 
@@ -11,7 +12,6 @@ router.use(async (req, res, next) => {
   }
 })
 
-router.get
 
 
 mudule.exports = router;

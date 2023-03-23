@@ -1,0 +1,62 @@
+[
+  {
+    "email": "corentin@mail.com",
+    "nom": "CorentinP",
+    "mdp": "secret",
+    "type": "Admin"
+  },
+  {
+    "email": "jean@mail.com",
+    "nom": "JeanD",
+    "mdp": "motdepasse",
+    "type": "Assos"
+  },
+  {
+    "email": "marie@mail.com",
+    "nom": "MarieL",
+    "mdp": "azerty",
+    "type": "Efrei"
+  },
+  {
+    "email": "pauline@mail.com",
+    "nom": "PaulineR",
+    "mdp": "qwerty",
+    "type": "Admin"
+  },
+  {
+    "email": "thomas@mail.com",
+    "nom": "ThomasS",
+    "mdp": "pass123",
+    "type": "Assos"
+  },
+  {
+    "email": "laura@mail.com",
+    "nom": "LauraM",
+    "mdp": "mdp1234",
+    "type": "Efrei"
+  },
+  {
+    "email": "alexandre@mail.com",
+    "nom": "AlexandreG",
+    "mdp": "123456",
+    "type": "Admin"
+  },
+  {
+    "email": "pierre@mail.com",
+    "nom": "PierreF",
+    "mdp": "password",
+    "type": "Assos"
+  },
+  {
+    "email": "anne@mail.com",
+    "nom": "AnneH",
+    "mdp": "azertyuiop",
+    "type": "Efrei"
+  },
+  {
+    "email": "emilie@mail.com",
+    "nom": "EmilieT",
+    "mdp": "mdp456",
+    "type": "Admin"
+  }
+]
