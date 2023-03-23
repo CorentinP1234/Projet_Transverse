@@ -1,3 +1,6 @@
+// Creer un schema dans MySql Workbench
+// Modifier 3 parametres: USER, PASSWORD, et DB (le nom du schema)
+
 // Corentin
 
 module.exports = {
