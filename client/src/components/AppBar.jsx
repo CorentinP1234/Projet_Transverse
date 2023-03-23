@@ -14,6 +14,11 @@ import { mainListItems, secondaryListItems } from '../components/Side_Bar';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Divider from '@mui/material/Divider';
 import Footer from './Footer';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AddCommentIcon from '@mui/icons-material/AddComment';
 
 const drawerWidth = 240;
 
@@ -62,7 +67,23 @@ function AppBarTemp({ open, handleDrawerOpen }) {
           noWrap
           sx={{ flexGrow: 1 }}
         >
-          Learning EFFREI
+          Learning EFREI
+        </Typography>
+        <Typography
+          component="h1"
+          variant="h6"
+          color="inherit"
+          noWrap
+          sx={{ flexGrow: 1 }}
+        > 
+          <React.Fragment>
+          <ListItemButton href='/Formulaire'>
+          <ListItemIcon>
+          <AddCommentIcon />
+          </ListItemIcon>
+          <ListItemText primary="ajouter un évènement"/>
+          </ListItemButton>
+          </React.Fragment>
         </Typography>
         <IconButton color="inherit">
           <Badge badgeContent={4} color="secondary">
