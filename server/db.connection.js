@@ -1,4 +1,4 @@
-console.log('Ceci doit etre affiche une fois (dans db.connection.js)')
+console.log('Ceci doit etre affiche une fois (dans db.connection.js)');
 
 // Importation du fichier de configuration de la base de données
 const dbConfig = require("./db.config.js");
@@ -24,11 +24,11 @@ const connection = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, 
 });
 
 connection.authenticate().then(() => {
-    console.log("Connexion Reussie\n")
+    console.log("Connexion Reussie\n");
 }).catch((err) => {
-    console.log("Erreur connexion a la base de donnee")
-    console.log("As tu configuré db.config.js ?")
-})
+    console.log("Erreur connexion a la base de donnee");
+    console.log("=> configuré db.config.js");
+});
 
 // Exportation de la connexion et de la bibliothèque Sequelize
 module.exports = {

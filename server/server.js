@@ -64,15 +64,6 @@ app.post('/api/signin', async (req, res) => {
   Comptes.create(compte);
 });
 
-app.get('api/login', async (req, res) => {
-  console.log("POST /login");
-  var isLoggedIn = ComptesController.findByEmail(req, res);
-  if (isLoggedIn)
-    return true;
-  else
-    return false;
-});
-
 app.post("/api/addMission", async function (req, res) {
   console.log("POST /addMission");
 
@@ -93,43 +84,13 @@ app.post("/api/addMission", async function (req, res) {
   Comptes.create(mission);
 });
 
+app.get('api/login', async (req, res) => {
+  console.log("POST /login");
+  var isLoggedIn = ComptesController.findByEmail(req, res);
+  if (isLoggedIn)
+    return true;
+  else
+    return false;
+});
+
 app.listen(5000, () => { console.log("Server started on port 5000"); });
-
-
-
-Comptes.sync({ force: true })
-  .then(() => {
-    return Comptes.bulkCreate(all_comptes);
-  })
-  .then(data => { console.log("Table compte syncrhonisé"); })
-  .catch(() => console.log("Erreur synchronisation compte"));
-
-
-Missions.sync({ force: true })
-  .then(() => {
-    return Missions.bulkCreate(all_missions);
-  })
-  .then(data => console.log("Table mission syncrhonisé"))
-  .catch((err) => console.log("Erreur synchronisation mission:\n" + err));
-
-// Prevent DeadLock (Session is link to User)
-// Compte.sync({ force: false, alter: true })
-//   .then(() => {
-//     Session.belongsTo(User); // must wait User finish
-//     Session.sync({ force: false, alter: true });
-//   })
-//
-// const obj = {
-//       titre: "example_de_titre",
-//       description: "Ceci est une description",
-//       recruteur: "example de recruteur",
-//       type: "example de type de mission",
-//       xp: "5",
-//       participant_max: "10",
-//       date: "10 mars",
-//       heure: "11h",
-//       duree: "120 min",
-//       lien_important: "http//inscription.com",
-//       lien_contact: "Discord: discord.com/...\nMail: Assos@mail.com",
-//       lieu: "Effrei"
-//     }
