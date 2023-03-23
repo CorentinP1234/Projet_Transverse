@@ -16,6 +16,9 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { useEffect, useState } from 'react';
+// import MissionCard from '../components/MissionCard';
+
 const theme = createTheme();
 
 const tiers = [
@@ -83,13 +86,38 @@ const footers = [
     description: ['Privacy policy', 'Terms of use'],
   },
 ];
+// fetch("/missions").then(data => {
+//   console.log(data)
+// })
 
 function PricingContent() {
+  const [missions, setBackendData] = useState([])
+
+  useEffect(() => {
+    fetch("/api/missions")
+      .then(response => response.json())
+      .then(missions => {
+        missions.forEach((mission) => {
+          mission.infos = [
+            `Date : ${mission.date}`,
+            `Heure : ${mission.heure}`,
+            `Lieu : ${mission.lieu}`,
+            `Durée : ${mission.durée}`,
+          ];
+        });
+        return missions;
+      })
+      .then(missions => {
+        setBackendData(missions);
+        console.log(missions); // This will only be executed after setBackendData has finished updating the state
+      });
+  }, []);
+
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
-      
+
       {/* Hero unit */}
       <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
         <Typography
@@ -108,33 +136,33 @@ function PricingContent() {
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
+          {missions.map((mission) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
               item
-              key={tier.title}
+              key={mission.id}
               xs={12}
-              sm={tier.title === 'Enterprise' ? 12 : 6}
+              sm={mission.title === 'Enterprise' ? 12 : 6}
               md={4}
             >
               <Card>
-                <button fullWidth variant={tier.buttonVariant} >
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
-                  action={tier.title === 'Pro' ? <StarIcon /> : null}
-                  subheaderTypographyProps={{
-                    align: 'center',
-                  }}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === 'light'
-                        ? theme.palette.grey[200]
-                        : theme.palette.grey[700],
-                  }}
-                />
-                </button>
+                <Button fullWidth variant={'outlined'} style={{ padding: 0, width: '100%' }} >
+                  <CardHeader
+                    title={mission.titre}
+                    subheader={mission.subheader}
+                    titleTypographyProps={{ align: 'center' }}
+                    action={mission.title === 'Pro' ? <StarIcon /> : null}
+                    subheaderTypographyProps={{
+                      align: 'center',
+                    }}
+                    sx={{
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === 'light'
+                          ? theme.palette.grey[200]
+                          : theme.palette.grey[700],
+                    }}
+                  />
+                </Button>
                 <CardContent>
                   <Box
                     sx={{
@@ -145,11 +173,11 @@ function PricingContent() {
                     }}
                   >
                     <Typography component="h2" variant="h4" color="text.primary">
-                      {tier.price}XP
+                      {mission.xp} XP
                     </Typography>
                   </Box>
                   <ul>
-                    {tier.description.map((line) => (
+                    {mission.infos.map((line) => (
                       <Typography
                         component="li"
                         variant="subtitle1"
@@ -162,8 +190,8 @@ function PricingContent() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant}>
-                    {tier.buttonText}
+                  <Button fullWidth variant={'outlined'}>
+                    {'REJOINDRE ICI'}
                   </Button>
                 </CardActions>
               </Card>
@@ -191,10 +219,10 @@ function PricingContent() {
 export default function Missions() {
   return (
     <ThemeProvider theme={theme}>
-    <div className="Container">
-    <div className="shift" style={{ height: 43 }}></div>
-      <PricingContent/>
-    </div>
+      <div className="Container">
+        <div className="shift" style={{ height: 43 }}></div>
+        <PricingContent />
+      </div>
     </ThemeProvider>
   );
 }
