@@ -13,6 +13,7 @@ import List from '@mui/material/List';
 import { mainListItems, secondaryListItems } from '../components/Side_Bar';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Divider from '@mui/material/Divider';
+import Footer from './Footer';
 
 const drawerWidth = 240;
 
@@ -161,6 +162,7 @@ export default function AppBar() {
           {secondaryListItems}
         </List>
       </Drawer>
+      {/* <Footer/> */}
     </Box>
   )
 }
