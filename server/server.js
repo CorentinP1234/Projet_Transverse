@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const { Sequelize, connection } = require("./db.connection");
-
+app.use(express.json());
 
 const Comptes = require("./models/compte.model")(connection, Sequelize);
 const Missions = require("./models/mission.model")(connection, Sequelize);
@@ -51,15 +51,15 @@ app.get("/api/comptes", (req, res) => {
 
 app.post('/api/signin', async (req, res) => {
   console.log("POST /signin");
-  var is_already_singin = ComptesController.findByEmail(req, res);
+  console.log(req.body.email);
+  console.log(req.body.password);
+  // var is_already_singin = ComptesController.findByEmailAndPassword(req.body.email, req.body.password);
 
-  if (is_already_singin) return;
+  // if (is_already_singin) return;
 
   const compte = {
     email: req.body.email,
-    nom: req.body.nom,
-    mdp: req.body.mdp,
-    type: req.body.type,
+    mdp: req.body.password,
   };
   Comptes.create(compte);
 });
@@ -84,13 +84,19 @@ app.post("/api/addMission", async function (req, res) {
   Comptes.create(mission);
 });
 
-app.get('api/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
   console.log("POST /login");
-  var isLoggedIn = ComptesController.findByEmail(req, res);
-  if (isLoggedIn)
-    return true;
-  else
-    return false;
+  const { email, password } = req.body;
+  const isLoggedIn = await ComptesController.findByEmailAndPassword(email, password);
+
+  if (isLoggedIn) {
+    console.log(`Login successful for email: ${email}`);
+    res.status(200).json({ message: 'Login successful' });
+  } else {
+    console.log(`Login failed for email: ${email}`);
+    res.status(401).json({ message: 'Invalid email or password' });
+  }
+  console.log();
 });
 
 app.listen(5000, () => { console.log("Server started on port 5000"); });

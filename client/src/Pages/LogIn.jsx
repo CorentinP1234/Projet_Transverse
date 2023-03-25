@@ -17,13 +17,31 @@ import image from '#/assets/image_login.jpg';
 const theme = createTheme();
 
 export default function LogIn() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const infos = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(infos),
+      });
+
+      if (response.ok) {
+        // TODO GO TO HOME 
+      } else {
+        setError('Invalid email or password');
+      }
+    }
+    catch (error) {
+      setError('Error logging in');
+    }
   };
 
   return (
@@ -58,7 +76,7 @@ export default function LogIn() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Log in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -91,7 +109,7 @@ export default function LogIn() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Log in
               </Button>
               <Grid container>
                 <Grid item xs>

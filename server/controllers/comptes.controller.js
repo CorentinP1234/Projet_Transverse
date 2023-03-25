@@ -8,14 +8,12 @@ exports.create = async (mission) => {
   Comptes.create(mission);
 };
 
-// Fonction pour trouver une mission par email
-exports.findByEmail = async (req, res) => {
-  const email = req.body.email;
+exports.findByEmailAndPassword = async (email, password) => {
   // Création de la condition à utiliser pour la requête
-  var condition = email ? { email: { [Op.eq]: email } } : null;
+  var condition = email ? { email: { [Op.eq]: email }, passowrd: { [Op.eq]: password } } : null;
 
   var result;
-  // Utilisation de la fonction findOne pour trouver la mission correspondant à la condition
+  // Utilisation de la fonction findOne pour trouver la copmte correspondant à la condition
   await Comptes.findOne({ where: condition })
     .then(data => {
       result = data;
@@ -26,6 +24,23 @@ exports.findByEmail = async (req, res) => {
   // Renvoi du résultat de la requête
   return result;
 };
+
+exports.findByEmail = async (email) => {
+  // Création de la condition à utiliser pour la requête
+  var condition = email ? { email: { [Op.eq]: email } } : null;
+
+  var result;
+  // Utilisation de la fonction findOne pour trouver le compte correspondant à la condition
+  await Comptes.findOne({ where: condition })
+    .then(data => {
+      result = data;
+    })
+    .catch(data => {
+      result = data;
+    });
+  // Renvoi du résultat de la requête
+  return result;
+}
 
 // Fonction pour trouver une mission par ID
 exports.findOne = (req, res) => {

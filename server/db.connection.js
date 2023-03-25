@@ -27,7 +27,7 @@ connection.authenticate().then(() => {
     console.log("Connexion Reussie\n");
 }).catch((err) => {
     console.log("Erreur connexion a la base de donnee");
-    console.log("=> configuré db.config.js");
+    console.log("=> configuré db.config.js\n");
 });
 
 // Exportation de la connexion et de la bibliothèque Sequelize

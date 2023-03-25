@@ -17,13 +17,33 @@ import image from '#/assets/image_login.jpg';
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const formData = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+    console.log(formData);
+    try {
+      const response = await fetch('/api/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error signing in');
+      }
+
+      console.log('Sign-in successful');
+      // Redirect to a new page or update the UI to show that the sign-in was successful
+    } catch (error) {
+      console.error(error);
+      // Handle any errors that occur during the sign-in process
+    }
   };
 
   return (
