@@ -12,7 +12,6 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import image from '#/assets/image_login.jpg';
 
 const theme = createTheme();
 
@@ -54,7 +53,6 @@ export default function LogIn() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: `url(${image})`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

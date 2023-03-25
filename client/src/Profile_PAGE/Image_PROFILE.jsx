@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import image from '../assets/jujumeme.png';
+import image from "../assets/téléchargement.png"
 
 
 export default function Chart() {

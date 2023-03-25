@@ -7,14 +7,14 @@ const Comptes = require("./models/compte.model")(connection, Sequelize);
 const Missions = require("./models/mission.model")(connection, Sequelize);
 
 const all_missions = require('./tmpMissions.json');
-const all_comptes = require("./tmpComptes.json");
+// const all_comptes = require("./tmpComptes.json");
 
-Comptes.sync({ force: true })
-  .then(() => {
-    return Comptes.bulkCreate(all_comptes);
-  })
-  .then(data => { console.log("Table compte syncrhonisé"); })
-  .catch(() => console.log("Erreur synchronisation compte"));
+Comptes.sync({ force: true });
+//   .then(() => {
+//     return Comptes.bulkCreate(all_comptes);
+//   })
+//   .then(data => { console.log("Table compte syncrhonisé"); })
+//   .catch(() => console.log("Erreur synchronisation compte"));
 
 Missions.sync({ force: true })
   .then(() => {
@@ -51,17 +51,41 @@ app.get("/api/comptes", (req, res) => {
 
 app.post('/api/signin', async (req, res) => {
   console.log("POST /signin");
-  console.log(req.body.email);
-  console.log(req.body.password);
-  // var is_already_singin = ComptesController.findByEmailAndPassword(req.body.email, req.body.password);
-
-  // if (is_already_singin) return;
-
   const compte = {
     email: req.body.email,
-    mdp: req.body.password,
+    password: req.body.password,
   };
+  console.log("sign in :" + JSON.stringify(compte));
+
+  var is_already_singin = await ComptesController.findCompteByEmailAndPassword(compte.email, compte.password);
+
+  if (is_already_singin) {
+    console.log("user is already sign in, does nothing");
+    return;
+  }
+  
+  console.log("Create compte\n");
   Comptes.create(compte);
+});
+
+
+app.post('/api/login', async (req, res) => {
+  console.log("POST /login");
+  const compte = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+  console.log("log in :" + JSON.stringify(compte));
+  const isLoggedIn = await ComptesController.findCompteByEmailAndPassword(compte.email, compte.password);
+
+  if (isLoggedIn) {
+    console.log(`Login successful for email: ${compte.email}`);
+    res.status(200).json({ message: 'Login successful' });
+  } else {
+    console.log(`Login failed for email: ${compte.email}`);
+    res.status(401).json({ message: 'Invalid email or password' });
+  }
+  console.log();
 });
 
 app.post("/api/addMission", async function (req, res) {
@@ -82,21 +106,6 @@ app.post("/api/addMission", async function (req, res) {
     lieu: req.body.lieu
   };
   Comptes.create(mission);
-});
-
-app.post('/api/login', async (req, res) => {
-  console.log("POST /login");
-  const { email, password } = req.body;
-  const isLoggedIn = await ComptesController.findByEmailAndPassword(email, password);
-
-  if (isLoggedIn) {
-    console.log(`Login successful for email: ${email}`);
-    res.status(200).json({ message: 'Login successful' });
-  } else {
-    console.log(`Login failed for email: ${email}`);
-    res.status(401).json({ message: 'Invalid email or password' });
-  }
-  console.log();
 });
 
 app.listen(5000, () => { console.log("Server started on port 5000"); });

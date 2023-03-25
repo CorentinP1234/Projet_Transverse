@@ -1,6 +1,6 @@
 // Importation des dépendances nécessaires
 const Sequelize = require("../db.connection");// permet d'importer la connexion à la base de données
-const Comptes = require("../models/mission.model")(Sequelize.connection, Sequelize.Sequelize);// permet d'importer le modèle de données pour la table Missions
+const Comptes = require("../models/compte.model")(Sequelize.connection, Sequelize.Sequelize);// permet d'importer le modèle de données pour la table Missions
 const { Op } = require("sequelize");// permet d'utiliser les opérateurs Sequelize
 
 // Fonction pour créer une nouvelle mission
@@ -8,7 +8,7 @@ exports.create = async (mission) => {
   Comptes.create(mission);
 };
 
-exports.findByEmailAndPassword = async (email, password) => {
+exports.getByEmailAndPassword = async (email, password) => {
   // Création de la condition à utiliser pour la requête
   var condition = email ? { email: { [Op.eq]: email }, passowrd: { [Op.eq]: password } } : null;
 
@@ -19,10 +19,22 @@ exports.findByEmailAndPassword = async (email, password) => {
       result = data;
     })
     .catch(data => {
+      console.log("STOP");
+      console.log(data);
       result = data;
     });
   // Renvoi du résultat de la requête
   return result;
+};
+
+exports.findCompteByEmailAndPassword = async (email, password) => {
+  const compte = await Comptes.findOne({
+    where: {
+      email,
+      password
+    }
+  });
+  return compte !== null;
 };
 
 exports.findByEmail = async (email) => {
@@ -40,7 +52,7 @@ exports.findByEmail = async (email) => {
     });
   // Renvoi du résultat de la requête
   return result;
-}
+};
 
 // Fonction pour trouver une mission par ID
 exports.findOne = (req, res) => {

@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
         nom: {
             type: Sequelize.STRING,
         },
-        mdp: {
+        password: {
             type: Sequelize.STRING,
             allowNull: false
         },
